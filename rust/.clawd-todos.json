@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Count total .rs files in the project",
+    "activeForm": "Counting total .rs files",
+    "status": "in_progress"
+  },
+  {
+    "content": "List all crates in crates/ directory",
+    "activeForm": "Listing crates",
+    "status": "pending"
+  },
+  {
+    "content": "Read PARITY.md and analyze the 9 merged lanes",
+    "activeForm": "Reading and analyzing PARITY.md",
+    "status": "pending"
+  },
+  {
+    "content": "Read PHILOSOPHY.md and explain the core philosophy",
+    "activeForm": "Reading and analyzing PHILOSOPHY.md",
+    "status": "pending"
+  },
+  {
+    "content": "Analyze findings and propose one key improvement",
+    "activeForm": "Analyzing and proposing improvements",
+    "status": "pending"
+  }
+]
