@@ -39,6 +39,7 @@ impl ProviderClient {
                     Some(meta) if meta.auth_env == "DASHSCOPE_API_KEY" => {
                         OpenAiCompatConfig::dashscope()
                     }
+                    Some(meta) if meta.auth_env == "OLLAMA_API_KEY" => OpenAiCompatConfig::ollama(),
                     _ => OpenAiCompatConfig::openai(),
                 };
                 Ok(Self::OpenAi(OpenAiCompatClient::from_env(config)?))
@@ -233,6 +234,32 @@ mod tests {
                 );
             }
             other => panic!("Expected ProviderClient::OpenAi for qwen-plus, got: {other:?}"),
+        }
+    }
+
+    #[test]
+    fn ollama_model_uses_ollama_config_not_openai() {
+        let _lock = env_lock();
+        let _ollama = EnvVarGuard::set("OLLAMA_API_KEY", Some("dummy"));
+        let _ollama_base_url =
+            EnvVarGuard::set("OLLAMA_BASE_URL", Some("http://127.0.0.1:11434/v1"));
+        let _openai = EnvVarGuard::set("OPENAI_API_KEY", None);
+
+        let client = ProviderClient::from_model("ollama/glm-4.7-flash");
+
+        assert!(
+            client.is_ok(),
+            "ollama/glm-4.7-flash with OLLAMA_API_KEY set should build successfully, got: {:?}",
+            client.err()
+        );
+
+        match client.unwrap() {
+            ProviderClient::OpenAi(openai_client) => {
+                assert_eq!(openai_client.base_url(), "http://127.0.0.1:11434/v1");
+            }
+            other => {
+                panic!("Expected ProviderClient::OpenAi for ollama/glm-4.7-flash, got: {other:?}")
+            }
         }
     }
 }
