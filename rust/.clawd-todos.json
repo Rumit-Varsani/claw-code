@@ -1,27 +1,32 @@
 [
   {
-    "content": "Count total .rs files in the project",
-    "activeForm": "Counting total .rs files",
+    "content": "Explore project structure and understand existing provider implementations",
+    "activeForm": "Completing project exploration",
+    "status": "completed"
+  },
+  {
+    "content": "Examine ToolDefinition and MessageResponse API formats, normalize_response, and tool call handling",
+    "activeForm": "Examining API types and response normalization",
+    "status": "completed"
+  },
+  {
+    "content": "Design Ollama adapter with tool calling, error handling, and retry logic",
+    "activeForm": "Designing Ollama adapter",
     "status": "in_progress"
   },
   {
-    "content": "List all crates in crates/ directory",
-    "activeForm": "Listing crates",
+    "content": "Implement ollama_adapter.rs with tool calling fix",
+    "activeForm": "Implementing ollama_adapter.rs",
     "status": "pending"
   },
   {
-    "content": "Read PARITY.md and analyze the 9 merged lanes",
-    "activeForm": "Reading and analyzing PARITY.md",
+    "content": "Add response normalization and token counting for thinking content",
+    "activeForm": "Adding response normalization",
     "status": "pending"
   },
   {
-    "content": "Read PHILOSOPHY.md and explain the core philosophy",
-    "activeForm": "Reading and analyzing PHILOSOPHY.md",
-    "status": "pending"
-  },
-  {
-    "content": "Analyze findings and propose one key improvement",
-    "activeForm": "Analyzing and proposing improvements",
+    "content": "Implement permission enforcement and validation",
+    "activeForm": "Implementing permission enforcement",
     "status": "pending"
   }
 ]
