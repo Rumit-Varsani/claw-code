@@ -4168,12 +4168,8 @@ impl LiveCli {
         match result {
             Ok(summary) => {
                 self.replace_runtime(runtime)?;
-                spinner.finish(
-                    "✨ Done",
-                    TerminalRenderer::new().color_theme(),
-                    &mut stdout,
-                )?;
-                println!();
+                spinner.finish("✨ Done", TerminalRenderer::new().color_theme(), &mut stdout)?;
+                println!("{}", final_assistant_text(&summary));  // NEW - Added response text!
                 if let Some(event) = summary.auto_compaction {
                     println!(
                         "{}",
