@@ -741,8 +741,15 @@ fn build_assistant_message(
             "assistant stream ended without a message stop event",
         ));
     }
+
+    // When the stream is finished but produced no usable content blocks
+    // (empty text, no tool calls), return a minimal assistant message rather
+    // than failing the turn. This handles the common case where a model
+    // responds with a MessageStop that has no text and no tool calls
+    // (e.g., a thinking model whose reasoning is not exposed as text output).
+    // The caller's loop will exit because there are no pending tool uses.
     if blocks.is_empty() {
-        return Err(RuntimeError::new("assistant stream produced no content"));
+        blocks.push(ContentBlock::Text { text: String::new() });
     }
 
     Ok((
@@ -1709,18 +1716,22 @@ mod tests {
     }
 
     #[test]
-    fn build_assistant_message_requires_content() {
+    fn build_assistant_message_handles_empty_content_gracefully() {
+        // When the stream produces only a MessageStop with no text or tool calls,
+        // the runtime should treat this as a valid completion rather than an error.
+        // The caller's loop will exit because there are no pending tool uses.
         // given
         let events = vec![AssistantEvent::MessageStop];
 
         // when
-        let error =
-            build_assistant_message(events).expect_err("assistant messages should require content");
+        let result =
+            build_assistant_message(events).expect("empty content should be handled gracefully");
 
         // then
-        assert!(error
-            .to_string()
-            .contains("assistant stream produced no content"));
+        let (message, _usage, _cache_events) = result;
+        assert_eq!(message.blocks.len(), 1);
+        assert!(matches!(&message.blocks[0], ContentBlock::Text { text } if text.is_empty()));
+        // Usage may be None when the model provides no usage info
     }
 
     #[test]
