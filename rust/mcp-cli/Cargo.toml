@@ -1,0 +1,54 @@
+[package]
+name = "mcp-cli"
+version = "1.0.0"
+edition = "2021"
+description = "Terminal-based interactive client for Model Context Protocol (MCP) servers"
+license = "MIT"
+publish = false
+
+[dependencies]
+# TUI Framework
+ratatui = { version = "0.27" }
+crossterm = { version = "0.27" }
+
+# Async Runtime
+tokio = { version = "1", features = ["full"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+# HTTP/API
+reqwest = { version = "0.11", features = ["json"] }
+hyper = "0.14"
+
+# Text Processing
+textwrap = { version = "0.16", features = ["terminal_size"] }
+ansi-to-tui = "0.1"
+
+# Storage
+sqlx = { version = "0.7", features = ["sqlite", "runtime-tokio"] }
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+rustyline = { version = "14" }
+
+# Utilities
+anyhow = "1"
+thiserror = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+dirs = "5"
+
+[dev-dependencies]
+tempfile = "3"
+mockito = "1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true

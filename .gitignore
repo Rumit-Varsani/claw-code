@@ -2,6 +2,20 @@ __pycache__/
 archive/
 .omx/
 .clawd-agents/
+# macOS
+.DS_Store
+Thumbs.db
+# JavaScript/Node
+node_modules/
+.next/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+# Rust
+CARGO_HOME/
+target/
+doc/
 # Claude Code local artifacts
 .claude/settings.local.json
 .claude/sessions/
@@ -9,4 +23,7 @@ archive/
 .claw/settings.local.json
 .claw/sessions/
 .clawhip/
+# Sandbox/Build artifacts
+.sandbox-home/
+.sandbox-tmp/
 status-help.txt

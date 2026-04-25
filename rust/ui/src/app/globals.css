@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* Force dark mode explicitly to prevent white background */
+  html {
+    background-color: #000000;
+  }
+
+  /* Better paragraph spacing */
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+
+  /* Improved heading spacing */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  /* Smooth text selection */
+  ::selection {
+    @apply bg-white text-black;
+  }
+
+  /* Subtle focus indicator for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-white/20 rounded;
+    outline-offset: 2px;
+  }
+
+  /* Custom scrollbar for cleaner look - Thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Hide scrollbar for clean minimalist look */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
