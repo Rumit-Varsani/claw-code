@@ -1,0 +1,54 @@
+__pycache__/
+archive/
+.omx/
+.clawd-agents/
+# Claude Code local artifacts
+.claude/settings.local.json
+.claude/sessions/
+# Claw Code local artifacts
+.claw/settings.local.json
+.claw/sessions/
+.clawhip/
+status-help.txt
+.env
+
+# Build artifacts and dependency caches (not source code)
+node_modules/
+.sandbox-home/
+.claw/sessions/
+.claw/settings.local.json
+.claude/sessions/
+.claude/settings.local.json
+.archive/
+
+# Cargo registry cache (downloaded crates)
+.cargo/registry/
+.cargo/git/
+
+# IDE and editor artifacts
+.omx/
+.omc/
+.vscode/
+.idea/
+
+# Generated files
+*.pyc
+__pycache__/
+*.so
+*.dll
+*.dylib
+*.exe
+
+# Environment files
+.env.local
+.env.*.local
+
+# Session and plan files
+*.session
+.plans/
+
+# Additional local/build directories
+.rustup/
+.cargo/.etag
+.rustfmt*.toml
+cargo-sbom/

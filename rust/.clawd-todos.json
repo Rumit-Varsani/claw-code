@@ -1,0 +1,12 @@
+[
+  {
+    "content": "Run clippy, test, and grep in parallel",
+    "activeForm": "Running diagnostic commands",
+    "status": "in_progress"
+  },
+  {
+    "content": "Report findings in priority order",
+    "activeForm": "Analyzing findings",
+    "status": "pending"
+  }
+]

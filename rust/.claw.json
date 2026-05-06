@@ -1,0 +1,11 @@
+{
+  "model": "openai/qwen3.6:latest",
+  "aliases": {
+    "quick": "openai/qwen3.6:latest",
+    "fast": "openai/qwen3.6:latest",
+    "best": "openai/qwen3.6:latest"
+  },
+  "permissions": {
+    "defaultMode": "dontAsk"
+  }
+}
