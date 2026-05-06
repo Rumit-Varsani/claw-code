@@ -52,3 +52,12 @@ __pycache__/
 .cargo/.etag
 .rustfmt*.toml
 cargo-sbom/
+
+# Local/build directories (must match from repo root)
+.rustup/
+.cargo/.etag
+.rustfmt*.toml
+cargo-sbom/
+rust/.claude/
+rust/.sandbox-tmp/
+web/.next/
